@@ -38,24 +38,24 @@ namespace AlphaCypher
             return resp;
         }
         #endregion
-
-        #region[ENCODE]
+        //FATTO
+        #region[ENCODE FUNZIONANTE]
         public string Encode(string text, string cypher)
         {
             string resp = "";
-            int spiazzamento = ReserchLetter(cypher.ToUpper()[0]) + 1;
+            int spiazzamento = ReserchLetter(cypher.ToUpper()[0]);
             resp = Encode(text.ToUpper(), spiazzamento);
             return resp;
         }
-        protected string Encode(string testo, int codice)
+        protected string Encode(string testo, int code)
         {
             string resp = "";
             char[] s = testo.ToCharArray();
             for (int i = 0; i < s.Length; i++)
             {
                 char tmp = s[i];
-                int pos = ReserchLetter(tmp);             
-                int posCodificata = (pos + codice) % 26;      
+                int pos = ReserchLetter(tmp);
+                int posCodificata = (pos + code) % 26;
                 resp += _vettAlfabeto[posCodificata];
             }
             return resp;
@@ -63,10 +63,25 @@ namespace AlphaCypher
         #endregion
 
         #region[DECODE]
-        public virtual string Decode(string text, string cypher)
+        public string Decode(string text, string cypher)
         {
-            throw new NotImplementedException();
-
+            string resp = "";
+            int spiazzamento = ReserchLetter(cypher.ToUpper()[0]);
+            resp = Decode(text.ToUpper(), spiazzamento);
+            return resp;
+        }
+        protected string Decode(string testo, int code)
+        {
+            string resp = "";
+            char[] s = testo.ToCharArray();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char tmp = s[i];
+                int pos = ReserchLetter(tmp);
+                int posCodificata = (pos - code) % 26;
+                resp += _vettAlfabeto[posCodificata];
+            }
+            return resp;
         }
 
         #endregion
@@ -76,7 +91,6 @@ namespace AlphaCypher
         {
             throw new NotImplementedException();
         }
-
         #endregion
 
         #region[DECODE ASYNC]
