@@ -18,7 +18,7 @@ namespace AlphaCyperTest
             string ris = "EFFE";
             Caesar crypt = new Caesar();
             string codifica = crypt.Encode(testo, codice);
-            Assert.AreEqual(codifica,ris);
+            Assert.AreEqual(ris,codifica);
         }
     }
 }
