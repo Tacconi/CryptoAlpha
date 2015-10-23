@@ -21,6 +21,17 @@ namespace AlphaCyperTest
             Assert.AreEqual(expected, codifica);
         }
         [TestMethod]
+        public void TestCaesarEncodeBCCB()
+        {
+            string testo = "BCCB";
+            string codice = "D";
+            string expected = "EFFE";
+            Caesar crypt = new Caesar();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+
+        [TestMethod]
         public void TestCaesarDecodeEFFE()
         {
             string testo = "DEED";
