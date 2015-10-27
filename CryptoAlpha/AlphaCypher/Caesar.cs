@@ -32,6 +32,7 @@ namespace AlphaCypher
             {
                 if (tmp == _vettAlfabeto[i])
                 {
+
                     resp = i;
                 }
             }
@@ -74,11 +75,12 @@ namespace AlphaCypher
         {
             string resp = "";
             char[] s = testo.ToCharArray();
+            int posCodificata = 0;
             for (int i = 0; i < s.Length; i++)
             {
                 char tmp = s[i];
-                int pos = ReserchLetter(tmp);
-                int posCodificata = (pos - code) % 26;
+                int pos = ReserchLetter(tmp);               
+                posCodificata = (pos - code) % 26;
                 resp += _vettAlfabeto[posCodificata];
             }
             return resp;
@@ -87,9 +89,9 @@ namespace AlphaCypher
         #endregion
 
         #region[ENCODE ASYNC]
-        public async Task<string> EncodeAsync(string text, string cypher)
+        public Task<string> EncodeAsync(string text, string cypher)
         {
-            return "";
+            throw new NotImplementedException();
         }
 
         #endregion
