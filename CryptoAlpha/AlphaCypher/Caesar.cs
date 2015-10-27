@@ -63,7 +63,7 @@ namespace AlphaCypher
         }
         #endregion
 
-        #region[DECODE]
+        #region[DECODE NON FUNZIONANTE]
         public string Decode(string text, string cypher)
         {
             string resp = "";
@@ -89,9 +89,12 @@ namespace AlphaCypher
         #endregion
 
         #region[ENCODE ASYNC]
-        public Task<string> EncodeAsync(string text, string cypher)
+        public async Task<string> EncodeAsync(string text, string cypher)
         {
-            throw new NotImplementedException();
+            Task<string> resp;
+            resp = Task.Factory.StartNew(new Action(Encode(text,cypher)));
+            return resp;
+
         }
 
         #endregion
