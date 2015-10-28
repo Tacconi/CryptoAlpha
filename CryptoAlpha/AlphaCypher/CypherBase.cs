@@ -73,5 +73,22 @@ namespace AlphaCypher
             return resp;
         }
         #endregion
+
+        #region[ENCODE ASYNC]
+        public virtual Task<string> EncodeAsync(string text, string cypher)
+        {
+            throw new NotImplementedException();
+
+
+        }
+
+        #endregion
+
+        #region[DECODE ASYNC]
+        public virtual Task<string> DecodeAsync(string text, string cypher)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

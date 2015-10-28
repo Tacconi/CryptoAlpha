@@ -37,21 +37,6 @@ namespace AlphaCypher
 
         #endregion
 
-        #region[ENCODE ASYNC]
-        public Task<string> EncodeAsync(string text, string cypher)
-        {
-            throw new NotImplementedException();
-
-
-        }
-
-        #endregion
-
-        #region[DECODE ASYNC]
-        public Task<string> DecodeAsync(string text, string cypher)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
+     
     }
 }
