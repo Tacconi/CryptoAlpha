@@ -80,13 +80,12 @@ namespace AlphaCypher
         }
         #endregion
 
-        //TODO : Aggiungere Metodi ASYNC
 
+        //TODO : Aggiungere Metodi ASYNC
         #region[ENCODE ASYNC]
         public virtual Task<string> EncodeAsync(string text, string cypher)
         {
-            throw new NotImplementedException();
-
+            return null;
         }
 
         #endregion
@@ -94,7 +93,7 @@ namespace AlphaCypher
         #region[DECODE ASYNC]
         public virtual Task<string> DecodeAsync(string text, string cypher)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
       

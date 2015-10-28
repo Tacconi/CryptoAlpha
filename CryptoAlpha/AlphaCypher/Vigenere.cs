@@ -13,6 +13,8 @@ namespace AlphaCypher
 
         }
 
+        //FATTO - FUNZIONA
+        #region[ENCODE]
         public override string Encode(string text, string cypher)
         {
             string resp = "";
@@ -20,7 +22,10 @@ namespace AlphaCypher
                 resp += base.Encode(text[i], cypher[i % cypher.Length]);
             return resp;
         }
+        #endregion
 
+        //FATTO - FUNZIONA
+        #region[DECODE]
         public override string Decode(string text, string cypher)
         {
             string resp = "";
@@ -28,7 +33,7 @@ namespace AlphaCypher
                 resp += base.Decode(text[i], cypher[i % cypher.Length]);
             return resp;
         }
-
+        #endregion
 
     }
 }
