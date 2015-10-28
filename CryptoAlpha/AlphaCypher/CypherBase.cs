@@ -43,7 +43,6 @@ namespace AlphaCypher
         //Funzionante
         #region[ENCODE OK]
 
-
         public virtual string Encode(string text, string cypher)
         {
             return "";

@@ -11,7 +11,7 @@ namespace AlphaCyperTest
     public class Cyphertests
     {
         [TestMethod]
-        public void TestCaesarEncodeABBA()
+        public void TestCaesarEncodeABBA() // Funziona
         {
             string testo = "ABBA";
             string codice = "D";
@@ -21,7 +21,7 @@ namespace AlphaCyperTest
             Assert.AreEqual(expected, codifica);
         }
         [TestMethod]
-        public void TestCaesarEncodeBCCB()
+        public void TestCaesarEncodeBCCB() // Funziona
         {
             string testo = "BCCB";
             string codice = "D";
@@ -30,9 +30,8 @@ namespace AlphaCyperTest
             string codifica = crypt.Encode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
-
         [TestMethod]
-        public void TestCaesarDecodeDEED()
+        public void TestCaesarDecodeDEED() // Funziona
         {
             string testo = "DEED";
             string codice = "D";
@@ -41,9 +40,8 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
-
         [TestMethod]
-        public void TestCaesarDecodeEDDS()
+        public void TestCaesarDecodeEDDS() // Funziona
         {
             string testo = "EDDS";
             string codice = "E";
@@ -52,15 +50,24 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
-
         [TestMethod]
-        public void TestVigenereEncodeEDDS()
+        public void TestVigenereEncodeABBA() // Funziona
         {
             string testo = "ABBA";
             string codice = "DFS";
             string expected = "DGTD";
             Vigenere crypt = new Vigenere();
             string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        [TestMethod]
+        public void TestVigenereDecodeDGTD() // Funziona
+        {
+            string testo = "DGTD";
+            string codice = "DFS";
+            string expected = "ABBA";
+            Vigenere crypt = new Vigenere();
+            string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
     }
