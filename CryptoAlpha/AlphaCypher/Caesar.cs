@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlphaCypher
 {
-    public class Caesar : CypherBase ,ICypher
+    public class Caesar : CypherBase
     {
 
         public Caesar() : base()
@@ -26,7 +26,8 @@ namespace AlphaCypher
         
         #endregion
 
-        #region[DECODE NON FUNZIONANTE]
+        //FATTO
+        #region[DECODE]
         public string Decode(string text, string cypher)
         {
             string resp = "";
@@ -35,8 +36,6 @@ namespace AlphaCypher
             return resp;
         }
 
-        #endregion
-
-     
+        #endregion     
     }
 }

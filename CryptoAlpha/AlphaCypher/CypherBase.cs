@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AlphaCypher
 {
-    public abstract class CypherBase
+    public abstract class CypherBase : ICypher
     {
-
         protected List<Char> _vettAlfabeto;
 
         public CypherBase()
@@ -18,7 +17,7 @@ namespace AlphaCypher
         }
 
         #region[INITIALIZE ALPHABET & RESERCH LETTER]
-        public  virtual void InitializeAlphabet()
+        public virtual void InitializeAlphabet()
         {
             for (int i = 0; i < 26; i++)
             {
@@ -26,7 +25,7 @@ namespace AlphaCypher
                 _vettAlfabeto.Add(tmp);
             }
         }
-        public virtual  int ReserchLetter(char tmp)
+        public virtual int ReserchLetter(char tmp)
         {
             int resp = 0;
             for (int i = 0; i < _vettAlfabeto.Count; i++)
@@ -42,7 +41,7 @@ namespace AlphaCypher
         #endregion
 
         #region[ENCODE OK]
-        protected string Encode(string text, int cypher)
+        protected virtual string Encode(string text, int cypher)
         {
             string resp = "";
             char[] s = text.ToCharArray();
@@ -57,20 +56,21 @@ namespace AlphaCypher
         }
         #endregion
 
-        #region[DECODE]
-        protected string Decode(string testo, int code)
+        #region[DECODE OK]
+
+        protected virtual string Decode(string text, int cypher)
         {
             string resp = "";
-            char[] s = testo.ToCharArray();
-            int posCodificata = 0;
+            char[] s = text.ToCharArray();
             for (int i = 0; i < s.Length; i++)
             {
                 char tmp = s[i];
                 int pos = ReserchLetter(tmp);
-                posCodificata = (pos - code) % 26;
-                resp += _vettAlfabeto[posCodificata];
+                int decodedPos = (pos - cypher + 26) % 26;
+                resp += _vettAlfabeto[decodedPos];
             }
             return resp;
+
         }
         #endregion
 
@@ -79,13 +79,22 @@ namespace AlphaCypher
         {
             throw new NotImplementedException();
 
-
         }
 
         #endregion
 
         #region[DECODE ASYNC]
         public virtual Task<string> DecodeAsync(string text, string cypher)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Decode(string text, string cypher)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Encode(string text, string cypher)
         {
             throw new NotImplementedException();
         }
