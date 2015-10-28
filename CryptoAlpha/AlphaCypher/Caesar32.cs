@@ -23,6 +23,6 @@ namespace AlphaCypher
                 char temp = (char)i;
                _vettAlfabeto.Add(temp);                
             }
-        }        
+        }                
     }
 }

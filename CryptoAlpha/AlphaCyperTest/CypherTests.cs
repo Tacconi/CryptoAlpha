@@ -10,6 +10,17 @@ namespace AlphaCyperTest
     [TestClass]
     public class Cyphertests
     {
+        #region[TEST-CAESAR (SYNC)]
+        [TestMethod]
+        public void TestCaesarEncodeA() // Funziona
+        {
+            string testo = "A";
+            string codice = "D";
+            string expected = "D";
+            Caesar crypt = new Caesar();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
         [TestMethod]
         public void TestCaesarEncodeABBA() // Funziona
         {
@@ -50,6 +61,9 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+        #endregion
+
+        #region[TEST-VIGENERE (SYNC)]
         [TestMethod]
         public void TestVigenereEncodeABBA() // Funziona
         {
@@ -70,5 +84,6 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+        #endregion
     }
 }
