@@ -52,5 +52,16 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+
+        [TestMethod]
+        public void TestVigenereEncodeEDDS()
+        {
+            string testo = "ABBA";
+            string codice = "DFS";
+            string expected = "DGTD";
+            Vigenere crypt = new Vigenere();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
     }
 }
