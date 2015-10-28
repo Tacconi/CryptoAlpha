@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace AlphaCypher
 {
-    public class Vigenere
+    public class Vigenere : CypherBase
     {
-        
+        public Vigenere() : base()
+        {
+
+        }
+
     }
 }

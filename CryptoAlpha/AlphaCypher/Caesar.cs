@@ -15,27 +15,36 @@ namespace AlphaCypher
         }
         
         //FATTO
-        #region[ENCODE]
-        public string Encode(string text, string cypher)
+        #region[ENCODE OK]
+        public override string Encode(string text, string cypher)
         {
             string resp = "";
-            int spiazzamento = ReserchLetter(cypher.ToUpper()[0]);
-            resp = Encode(text.ToUpper(), spiazzamento);
+            for (int i = 0; i < text.Length; i++)
+            {
+                char tmp = base.Encode(text[i], cypher[0]);
+                resp = resp + tmp.ToString();
+            }
             return resp;
         }
         
         #endregion
 
         //FATTO
-        #region[DECODE]
-        public string Decode(string text, string cypher)
+        #region[DECODE OK]
+        public override string Decode(string text, string cypher)
         {
             string resp = "";
-            int spiazzamento = ReserchLetter(cypher.ToUpper()[0]);
-            resp = Decode(text.ToUpper(), spiazzamento);
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                char tmp = base.Decode(text[i], cypher[0]);
+                resp = resp + tmp.ToString();
+            }
+
             return resp;
         }
 
-        #endregion     
+        #endregion
+
     }
 }

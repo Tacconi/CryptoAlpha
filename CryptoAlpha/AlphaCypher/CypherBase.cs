@@ -40,39 +40,48 @@ namespace AlphaCypher
         }
         #endregion
 
+        //Funzionante
         #region[ENCODE OK]
-        protected virtual string Encode(string text, int cypher)
+
+
+        public virtual string Encode(string text, string cypher)
         {
-            string resp = "";
-            char[] s = text.ToCharArray();
-            for (int i = 0; i < s.Length; i++)
-            {
-                char tmp = s[i];
-                int pos = ReserchLetter(tmp);
-                int posCodificata = (pos + cypher) % 26;
-                resp += _vettAlfabeto[posCodificata];
-            }
+            return "";
+        }
+
+        protected char Encode(char text, char cypher)
+        {
+            char resp;
+            int pos = ReserchLetter(text);
+            int posCypher = ReserchLetter(cypher);
+            int posCodificata = (pos + posCypher) % 26;
+            resp = _vettAlfabeto[posCodificata];
             return resp;
         }
+
         #endregion
 
+        //Funzionante
         #region[DECODE OK]
-
-        protected virtual string Decode(string text, int cypher)
+        public virtual string Decode(string text, string cypher)
         {
-            string resp = "";
-            char[] s = text.ToCharArray();
-            for (int i = 0; i < s.Length; i++)
-            {
-                char tmp = s[i];
-                int pos = ReserchLetter(tmp);
-                int decodedPos = (pos - cypher + 26) % 26;
-                resp += _vettAlfabeto[decodedPos];
-            }
+            return "";
+        }
+
+        protected char Decode(char text, char cypher)
+        {
+            char resp;
+            int pos = ReserchLetter(text);
+            int posCypher = ReserchLetter(cypher);
+            int posCodificata = (pos - posCypher + 26) % 26;
+            resp = _vettAlfabeto[posCodificata];
+
             return resp;
 
         }
         #endregion
+
+        //TODO : Aggiungere Metodi ASYNC
 
         #region[ENCODE ASYNC]
         public virtual Task<string> EncodeAsync(string text, string cypher)
@@ -89,15 +98,9 @@ namespace AlphaCypher
             throw new NotImplementedException();
         }
 
-        public string Decode(string text, string cypher)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public string Encode(string text, string cypher)
-        {
-            throw new NotImplementedException();
-        }
+
         #endregion
     }
 }
