@@ -9,20 +9,23 @@ namespace AlphaCypher
 {
     public class Caesar32 : Caesar
     {
-        new List<Char> _vettAlfabeto;
-        string alphabet32;
-        public Caesar32() : base()
+        public override string Encode(string text, string cypher)
         {
-            alphabet32 = Base32Encoding.STANDARD_ALPHABET;
-            InitializeAlphabet();
+            string resp = "";
+            string tmp = base.Encode(text, cypher);
+            byte[] vettToEncode = Encoding.UTF8.GetBytes(tmp);
+            char[] Encoded = Base32Encoding.Base32.Encode(vettToEncode);
+            resp = new string(Encoded);
+            return resp;
         }
-        public override void InitializeAlphabet()
+        public override string Decode(string text, string cypher)
         {
-            for (int i = 0; i < alphabet32.Length; i++)
-            {
-                char temp = (char)i;
-               _vettAlfabeto.Add(temp);                
-            }
-        }                
+            string resp = "";
+            //string tmp = base.Decode(text, cypher);
+            //char[] vettToDecode = tmp.ToCharArray();
+            //byte[] Decoded = Base32Encoding.Base32.Decode(vettToDecode);
+            // resp = Encoding.UTF8.GetString(Decoded,0,Decoded.Length);
+            return resp;
+        }
     }
 }

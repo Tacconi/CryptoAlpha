@@ -11,6 +11,7 @@ namespace AlphaCyperTest
     public class Cyphertests
     {
         #region[TEST-CAESAR (SYNC)]
+        #region[CAESAR - ENCODE]
         [TestMethod]
         public void TestCaesarEncodeA() // Funziona
         {
@@ -41,6 +42,8 @@ namespace AlphaCyperTest
             string codifica = crypt.Encode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+        #endregion
+        #region[CAESAR - DECODE]
         [TestMethod]
         public void TestCaesarDecodeDEED() // Funziona
         {
@@ -61,6 +64,7 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+        #endregion
         #endregion
 
         #region[TEST-VIGENERE (SYNC)]
@@ -84,6 +88,34 @@ namespace AlphaCyperTest
             string codifica = crypt.Decode(testo, codice);
             Assert.AreEqual(expected, codifica);
         }
+        #endregion
+
+        #region[TEST-CAESAR32 (SYNC)]
+        #region[CAESAR32 - ENCODE]
+        [TestMethod]
+        public void TestCaesar32EncodeA() 
+        {
+            string testo = "ABBA";
+            string codice = "D";
+            string expected = "IRCUKRA=";
+            Caesar32 crypt = new Caesar32();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+        #region[CAESAR32 - DECODE]
+        [TestMethod]
+        public void TestCaesar32DecodeIRCUKRA()
+        {
+            string testo = "IRCUKRA=";
+            string codice = "D";
+            string expected = "ABBA";
+            Caesar32 crypt = new Caesar32();
+            string codifica = crypt.Decode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+
         #endregion
     }
 }
