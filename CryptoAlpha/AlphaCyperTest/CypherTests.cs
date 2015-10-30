@@ -97,7 +97,7 @@ namespace AlphaCyperTest
         {
             string testo = "ABBA";
             string codice = "D";
-            string expected = "IRCUKRA=";
+            string expected = "";
             Caesar32 crypt = new Caesar32();
             string codifica = crypt.Encode(testo, codice);
             Assert.AreEqual(expected, codifica);
@@ -117,5 +117,7 @@ namespace AlphaCyperTest
         #endregion
 
         #endregion
+
+        
     }
 }

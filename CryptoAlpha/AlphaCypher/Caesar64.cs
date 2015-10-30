@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlphaCypher
 {
-    class Caesar64
+    public class Caesar64 : Vigenere
     {
     }
 }

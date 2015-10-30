@@ -12,7 +12,13 @@ namespace AlphaCypher
         {
 
         }
-
+        protected override string Letters
+        {
+            get
+            {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+        }
         //FATTO - FUNZIONA
         #region[ENCODE]
         public override string Encode(string text, string cypher)
@@ -33,7 +39,24 @@ namespace AlphaCypher
                 resp += base.Decode(text[i], cypher[i % cypher.Length]);
             return resp;
         }
+
+
         #endregion
 
+        //FATTO - FUNZIONA
+        #region[ENCODE ASYNC]
+        public override Task<string> EncodeAsync(string text, string cypher)
+        {
+            return Task.Factory.StartNew(() => Encode(text, cypher));
+        }
+        #endregion
+
+        //FATTO - FUNZIONA
+        #region[DECODE ASYNC]
+        public override Task<string> DecodeAsync(string text, string cypher)
+        {
+            return Task.Factory.StartNew(() => Decode(text, cypher));
+        }
+        #endregion
     }
 }

@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace AlphaCypher
 {
-    public class Caesar : CypherBase
+    public class Caesar : Vigenere
     {
-
+        protected override string Letters
+        {
+            get
+            {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+        }
         public Caesar() : base()
         {
             
@@ -46,6 +52,20 @@ namespace AlphaCypher
 
         #endregion
 
-      
+        #region[ENCODE ASYNC]
+        public override Task<string> EncodeAsync(string text, string cypher)
+        {
+            return Task.Factory.StartNew(() => Encode(text, cypher));
+        }
+        #endregion
+
+        #region[DECODE ASYNC]
+        public override Task<string> DecodeAsync(string text, string cypher)
+        {
+            return Task.Factory.StartNew(() => Decode(text, cypher));
+        }
+        #endregion
+
+
     }
 }
