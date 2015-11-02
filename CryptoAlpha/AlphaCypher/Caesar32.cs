@@ -20,6 +20,7 @@ namespace AlphaCypher
         public override string Encode(string text, string cypher)
         {
             string resp = "";
+
             char[] text32 = Base32Encoding.Base32.Encode(Encoding.UTF8.GetBytes(text));
             char[] cypher32 = Base32Encoding.Base32.Encode(Encoding.UTF8.GetBytes(cypher));
 
@@ -32,11 +33,12 @@ namespace AlphaCypher
         }
         public override string Decode(string text, string cypher)
         {
-            string resp = "";           
-            char[] vettToDecode = text.ToCharArray();
-            byte[] Decoded = Base32Encoding.Base32.Decode(vettToDecode);
-            string tmp = Encoding.UTF8.GetString(Decoded, 0, Decoded.Length);
-            resp = base.Decode(tmp, cypher);
+            string resp = "";
+
+            char[] cypher32 = Base32Encoding.Base32.Encode(Encoding.UTF8.GetBytes(cypher));
+            string stringcypher32 = new string(cypher32);
+
+            resp = base.Decode(text, stringcypher32);
             return resp;
         }
     }
