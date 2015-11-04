@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AlphaCypher;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using System.Threading.Tasks;
 
 namespace AlphaCyperTest
 {
@@ -93,11 +94,11 @@ namespace AlphaCyperTest
         #region[TEST-CAESAR32 (SYNC)]
         #region[CAESAR32 - ENCODE]
         [TestMethod]
-        public void TestCaesar32EncodeA() 
+        public void TestCaesar32EncodeA()
         {
             string testo = "ABBA";
             string codice = "D";
-            string expected = "";
+            string expected = "QVADDPH7";
             Caesar32 crypt = new Caesar32();
             string codifica = crypt.Encode(testo, codice);
             Assert.AreEqual(expected, codifica);
@@ -107,7 +108,7 @@ namespace AlphaCyperTest
         [TestMethod]
         public void TestCaesar32DecodeIRCUKRA()
         {
-            string testo = "IRCUKRA=";
+            string testo = "QVADDPH7";
             string codice = "D";
             string expected = "ABBA";
             Caesar32 crypt = new Caesar32();
@@ -118,6 +119,89 @@ namespace AlphaCyperTest
 
         #endregion
 
-        
-    }
+        #region[TEST-VIGENERE32 (SYNC)]
+        #region[VIGENERE32 - ENCODE]
+        [TestMethod]
+        public void TestVigenere32EncodeABBA()
+        {
+            string testo = "ABBA";
+            string codice = "DFS";
+            string expected = "QWEJKPH7";
+            Vigenere32 crypt = new Vigenere32();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+        #region[VIGENERE32 - DECODE]
+        [TestMethod]
+        public void TestVigenere32DecodeQWEJKPH7()
+        {
+            string testo = "QWEJKPH7";
+            string codice = "DFS";
+            string expected = "ABBA";
+            Vigenere32 crypt = new Vigenere32();
+            string codifica = crypt.Decode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+
+        #endregion
+
+        #region[TEST-CAESAR64 (SYNC)]
+        #region[CAESAR64 - ENCODE]
+        [TestMethod]
+        public void TestCaesar64EncodeA()
+        {
+            string testo = "ABBA";
+            string codice = "D";
+            string expected = "hUIBhQ//";
+            Caesar64 crypt = new Caesar64();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+        #region[CAESAR32 - DECODE]
+        [TestMethod]
+        public void TestCaesar64DecodeIRCUKRA()
+        {
+            string testo = "hUIBhQ//";
+            string codice = "D";
+            string expected = "ABBA";
+            Caesar64 crypt = new Caesar64();
+            string codifica = crypt.Decode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+
+        #endregion
+
+        #region[TEST-VIGENERE64 (SYNC)]
+        #region[VIGENERE64 - ENCODE]
+        [TestMethod]
+        public void TestVigenere64EncodeABBA()
+        {
+            string testo = "ABBA";
+            string codice = "DFS";
+            string expected = "hYiVhUYS";
+            Vigenere64 crypt = new Vigenere64();
+            string codifica = crypt.Encode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+        #region[VIGENERE64 - DECODE]
+        [TestMethod]
+        public void TestVigenere6DecodehYiVhUYS()
+        {
+            string testo = "hYiVhUYS";
+            string codice = "DFS";
+            string expected = "ABBA";
+            Vigenere64 crypt = new Vigenere64();
+            string codifica = crypt.Decode(testo, codice);
+            Assert.AreEqual(expected, codifica);
+        }
+        #endregion
+
+        #endregion
+
+       }
 }

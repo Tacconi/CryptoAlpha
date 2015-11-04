@@ -20,7 +20,7 @@ namespace AlphaCypher
             
         }
         
-        //FATTO - FUNZIONA
+        
         #region[ENCODE OK]
         public override string Encode(string text, string cypher)
         {
@@ -34,8 +34,7 @@ namespace AlphaCypher
         }
         
         #endregion
-
-        //FATTO - FUNZIONA
+        
         #region[DECODE OK]
         public override string Decode(string text, string cypher)
         {
